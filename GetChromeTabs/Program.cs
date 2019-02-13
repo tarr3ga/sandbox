@@ -19,14 +19,16 @@ namespace GetChromeTabs
             {
                 foreach(Process proc in procsChrome)
                 {
-                    if(proc.MainWindowHandle == IntPtr.Zero)
+                    //Console.WriteLine(proc.Id.ToString());
+
+                    if (proc.MainWindowHandle == IntPtr.Zero)
                     {
                         continue;
                     }
 
                     AutomationElement root = AutomationElement.FromHandle(proc.MainWindowHandle);
 
-                    Condition condNewTab = new PropertyCondition(AutomationElement.NameProperty, "New Tab");
+                    Condition condNewTab = new PropertyCondition(AutomationElement.NameProperty, "Address and search bar");
 
                     AutomationElement elmNewTab = root.FindFirst(TreeScope.Descendants, condNewTab);
 
